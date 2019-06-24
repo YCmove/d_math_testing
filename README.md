@@ -1,10 +1,11 @@
 ## Requirements
-js file should be seperated from html.
-Simplly replace js block with: 
+js file should be seperated from html.  
+Simplly replace js block with:   
 `<script type="text/javascript" src="dmath.js"></script>`
-then move js code to another file `dmath.js`.
-<br>
-in the end of your js code, add this:
+then move js code to another file `dmath.js`.  
+
+
+in the end of your js code, add this:  
 ```
 module.exports = {
     Factorial: Factorial,
@@ -19,7 +20,7 @@ module.exports = {
     n_Stirling: n_Stirling
 };
 ```
-### Note: In order to be tested, the last output function should be named exactly like this, aka: `n_Harmonic`, `n_Catalan` ... and so on.
+### ** Note: In order to be tested, the last output function should be named exactly like this, aka: `n_Harmonic`, `n_Catalan` ... and so on.
 
 
 ## Enviroment setup
@@ -67,7 +68,30 @@ you will see in your package.json
 `npm test`
 
 
+### How to modify testing data
+all test code should be placed under `test` directory.  
 
+
+test data are defined obviously in the code.  
+[Chai Document](https://www.chaijs.com/api/bdd/)  
+```
+const Comb = require('../dmath').Comb;
+describe('test on Comb', ()=> {
+  expect(Comb(1, 1)).to.be.equal(1);
+  expect(Comb(3, 3)).to.be.equal(1);
+  expect(Comb(9, 6)).to.be.equal(84);
+  expect(Comb(15, 7)).to.be.equal(6435);
+  expect(Comb(99, 7)).to.be.equal(14887031544);
+});
+
+
+const n_Catalan = require('../dmath').n_Catalan;
+describe('test on n_Catalan', ()=> {
+  expect(n_Catalan(3)).to.be.an('array');
+  expect(n_Catalan(6)).to.have.lengthOf(7);
+  expect(n_Catalan(10)).to.deep.equal([1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796]);
+});
+```
 
 
 
