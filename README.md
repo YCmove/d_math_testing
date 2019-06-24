@@ -20,7 +20,7 @@ module.exports = {
     n_Stirling: n_Stirling
 };
 ```
-### ** Note: In order to be tested, the last output function should be named exactly like this, aka: `n_Harmonic`, `n_Catalan` ... and so on.
+### ** Note: In order to be tested, the last output function should be named exactly like this: `n_Harmonic`, `n_Catalan`, `Comb` ... and so on.
 
 
 ## Enviroment setup
@@ -68,12 +68,12 @@ you will see in your package.json
 `npm test`
 
 
-### How to modify testing data
+## How to modify testing data
 all test code should be placed under `test` directory.  
 
 
 test data are defined obviously in the code.  
-[Chai Document](https://www.chaijs.com/api/bdd/)  
+[See more on Chai Document](https://www.chaijs.com/api/bdd/)  
 ```
 const Comb = require('../dmath').Comb;
 describe('test on Comb', ()=> {
