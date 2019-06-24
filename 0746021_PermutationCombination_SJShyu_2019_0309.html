@@ -1,0 +1,310 @@
+<!-- I put comments here for you guys to learn html & javascript quickly. Refer to https://www.w3schools.com/tags/default.asp for "tags" in html.
+     G. S. Lee and S. J. Shyu Ver. 0.5 2019/03/08
+-->
+<!DOCTYPE html> <!--The <!DOCTYPE> declaration must be the very first thing in your HTML document, before the <html> tag.
+					The <!DOCTYPE> declaration is not an HTML tag; it is an instruction to the web browser about what version of HTML the page is written in.
+					Tip: Always add the <!DOCTYPE> declaration to your HTML documents, so that the browser knows what type of document to expect.
+				-->
+<html>  <!--The <html> tag tells the browser that this is an HTML document.
+			The <html> tag represents the root of an HTML document.
+			The <html> tag is the container for all other HTML elements (except for the <!DOCTYPE> tag).
+		-->
+	<head>	<!--The <head> element is a container for all the head elements.
+				The <head> element can include a title for the document, scripts, styles, meta information, and more.
+			-->
+		<!-- The <title> element defines the title of the document, and is required in all HTML/XHTML documents.  -->	
+		<title> 
+				Permutations and Combinations by S. J. Shyu  Ver. 0.3 2019/03/08 
+		</title>
+		<style> <!-- The <style> tag is used to define style information for an HTML document.
+					 Inside the <style> element you specify how HTML elements should render in a browser.
+					 Each HTML document can contain multiple <style> tags.
+				-->
+			<!-- Some specific properties of the tags: body, table and td are re-defined (as needed) as below. -->
+			body 	{ 	<!-- font-family: consolas;  -->
+						font-family: Times;
+					}
+			table 	{	text-align: center;
+						border-collapse: collapse;
+					}
+			th, td 	{	padding: 5px;
+						border: 1px solid #dddddd;
+					}
+			input[type="number"] 	{	width: 60px;
+									}
+		</style>
+	</head>
+	<body>	<!-- The <body> tag defines the document's body.
+				 The <body> element contains all the contents of an HTML document, such as text, hyperlinks, images, tables, lists, etc.
+			-->
+   	<table  bgcolor="c1d1c1"; style="text-align:left;">   
+		<tr>
+		<td rowspan="3"><img id="myImage" src="https://lh5.googleusercontent.com/74e4eE8qExONp_3pFqUVZ2NzA69Kphbb7IX8BWyq9ImUWDsCeDTJg0ltV0R5py9TpVJzrVOmrmyTnyEuaDnzmvg-_IiwAQ5jtQe_pvwKBqHm9ORCmPVe=w472" align="center" width="76" height="54">
+		
+		<!-- <td rowspan="3"><img id="myImage" src="https://lh3.googleusercontent.com/wgbzC9NQmY0oA4RlQe56A51JBsZozuY0UWBvTCaWUGS12BWsxRbkAbGkeTb8cu81mVcJPRI4Dv6pxlo4d0qn48idFY4nK_n9-BV7ApnD32hyz2yIIE6V=w572" align="center" width="76" height="50">
+		-->
+		</td>
+
+		</tr> 
+		<tr>
+			<td> <b><u>Permutations and Combinations</u></b> <br> <font size="-1" color="887799"> by Shyong Jian Shyu, sjshyu@gmail.com, Mar, 2019, Ver.0.8
+            </td>
+		</tr>
+	</table>			
+			
+		<table>	<!-- The <table> tag defines an HTML table.
+					 An HTML table consists of the <table> element and one or more <tr>, <th>, and <td> elements.
+					 The <tr> element defines a table row, the <th> element defines a table header, and the <td> element defines a table cell.
+				-->
+			<tr  bgcolor="ccddcc";>
+				<th>Formula
+				</th>
+				<th><label><i>n</i> = </label>
+					<input type="number" id="n" value="7" min="0">
+					<label><i>r</i> = </label>
+					<input type="number" id="r" value="3" min="0">
+				</th>
+				<th><button type="button" onclick="computeAll()">Compute All</button>
+				</th>	
+				<th>Order relevant
+				</th>
+				<th>Repetition
+				</th>				
+				<th>Memo
+				</th>								
+			</tr>
+<!--		<tr>
+				<td>
+					<label>n = </label>
+					<input type="number" id="n" value="7" min="0">
+				</td>
+				<td>
+					<label>r = </label>
+					<input type="number" id="r" value="3" min="0">
+				</td>
+				<td>
+					<button type="button" onclick="clickAll()">計算全部</button>
+				</td>
+			</tr>
+-->			
+			<tr>
+				<td>
+					<label><i>P</i>(<i>n</i>, <i>r</i>)</label>
+				</td>
+				<td>
+					<!-- The <span> tag is used to group inline-elements in a document.
+						 The <span> tag provides no visual change by itself.
+						 The <span> tag provides a way to add a hook to a part of a text or a part of a document.
+					-->
+					<span id="resPermutation"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickPerm()">Permutation</button>
+				</td>
+				<td>
+					yes
+				</td>
+				<td>
+					no
+				</td>
+				<td align="left">
+					# Permutations of size <i>r</i> from <i>n</i> distinct objects
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label><i>C</i>(<i>n</i>, <i>r</i>)</label>
+				</td>
+				<td>
+					<span id="resCombination"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickComb()">Combination</button>
+				</td>
+				<td>
+					no
+				</td>
+				<td>
+					no
+				</td>
+				<td align="left">
+					# Selections/Combinations of size <i>r</i> from <i>n</i> distinct objects
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label><i>n<sup>r</sup></i></label>
+				</td>
+				<td>
+					<span id="resArrangement"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickArra()">Arrangement with repetition</button>
+				</td>
+				<td>
+					yes
+				</td>
+				<td>
+					yes
+				</td>
+				<td align="left">
+					# Arrangements with repetition of size <i>r</i> from <i>n</i> distinct objects
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label><i>C</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label>
+				</td>
+				<td>
+					<span id="resSelectrofn"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickSele()">Selection with repetition</button>
+				</td>
+				<td>
+					no
+				</td>
+				<td>
+					yes
+				</td>
+				<td align="left">
+					# Selections with repetition of size <i>r</i> from <i>n</i> distinct objects
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>CCCC</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/57de4926a69e67cdcdf999030c5ec3c25d97b0c9" width="200" height="42">
+				</td>
+				<td>
+					<span id="resCatalan"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickCatalan()">n Catalan</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# the first n Catalan
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>CXXX</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://latex.artofproblemsolving.com/6/e/e/6ee37dda28ef984c6028faad23d8779b8e2f3856.png" width="240" height="60">
+				</td>
+				<td>
+					<span id="resTriangular"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickTriangular()">n triangular</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# the first n triangular
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>C</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f00b48e286cd58a34eb1690d0728a4aab4759111" width="240" height="60">
+				</td>
+				<td>
+					<span id="resHarmonic"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickHarmonic()">n harmonic</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# the first n harmonic
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>Ckkk</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0fff1a1716fcc169546079870357f92757ade5fa" width="200" height="60">
+				</td>
+				<td>
+					<span id="resFibonacci"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickFibonacci()">n Fibonacci</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# the first n Fibonacci
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>Csss</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2e850ce9c8a8679016480ae9a2a86853e49aab03" width="240" height="120">
+				</td>
+				<td>
+					<span id="resLucas"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickLucas()">n Lucas</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# the first n Lucas
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>Caaa</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c948549d707bddb136955023e72d60e33680ff71" width="300" height="120">
+				</td>
+				<td>
+					<span id="resEulerian"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickEulerian()">Eulerian numbers</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# Eulerian numbers with respect to m
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- <label><i>C</i>(<i>r</i>+<i>n</i>-1, <i>r</i>)</label> -->
+					<img src="https://latex.artofproblemsolving.com/7/9/a/79ac7d5a1d742b3652ad55b4865ae154d44b66d4.png" width="220" height="55">
+				</td>
+				<td>
+					<span id="resStirling"></span>
+				</td>
+				<td>
+					<button type="button" onclick="clickStirling()">Stirling number</button>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td align="left">
+					# Stirling number of the second kind
+				</td>
+			</tr>
+		</table>
+		<script type="text/javascript" src="dmath.js"></script>
+	</body>
+</html>
