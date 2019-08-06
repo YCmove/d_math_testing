@@ -34,10 +34,8 @@ module.exports = {
 export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 ```
+then just re-open your current terminal or `source ~/.bashrc`
 
-### install nvm
-simply close your current terminal, open a new terminal 
-or `source ~/.bashrc`
 
 ### use nvm to install node
 `nvm install node`
