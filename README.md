@@ -41,14 +41,16 @@ then just re-open your current terminal or `source ~/.bashrc`
 `nvm install node`
 
 ### Install JS testing framework
-cd to target directory then install JS testing framework
-`npm install --save-dev mocha`
-`npm install --save-dev chai`
-[Mocha](https://mochajs.org/)
-[Chia](https://www.chaijs.com/)
+cd to target directory then install JS testing framework. 
+`npm init`
+`npm install`
+`npm install --save-dev mocha`  
+`npm install --save-dev chai`  
+[Mocha official site](https://mochajs.org/)  
+[Chia official site](https://www.chaijs.com/)  
 [Guide tutorial](https://medium.com/@bebebobohaha/%E5%89%8D%E7%AB%AF%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6%E5%85%A5%E9%96%80-mocha%E8%88%87chai-b3037b3a1de1)
 
-after above installation
+after above installation  
 you will see in your package.json
 ```
 {
