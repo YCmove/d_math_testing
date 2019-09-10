@@ -67,6 +67,10 @@ you will see in your package.json
 ## Run test on dmath.js
 `npm test`
 
+## student_files
+- 此資料夾為全部學生的檔案
+- 命名原則 {學號}.js
+- 不會檢查 .html 檔
 
 ## How to modify testing data
 all test code should be placed under `test` directory.  
